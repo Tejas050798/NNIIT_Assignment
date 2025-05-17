@@ -1,27 +1,18 @@
 # Smart Flashcard Backend
 
-This is a backend API for a smart flashcard system. Users can add flashcards with questions and answers, and the backend automatically detects the subject based on keywords.
+This is a backend project for a smart flashcard system. Users can add flashcards using just a question and answer. The system automatically detects the subject (like Physics, Biology, etc.) based on keywords in the question.
 
 ## Features
 
-- Add flashcards (subject is inferred)
-- Retrieve flashcards from mixed subjects
-- Organized by student
+- Add flashcards without needing to choose a subject
+- Automatically detects the subject (Physics, Biology, History, etc.)
+- Students can retrieve a mixed set of flashcards from different subjects
+- Flashcards are organized by each student
 
 ## How It Works
 
-- Subject detection uses keyword matching
-- Flashcards are stored in memory (no DB used)
+The backend checks for certain keywords in the question. Based on those keywords, it assigns a subject to the flashcard. All flashcards are stored in memory for the current session.
 
-## Endpoints
+## Submitted by
 
-### POST `/flashcard`
-
-Add a new flashcard.
-
-```json
-{
-  "student_id": "stu001",
-  "question": "What is Newton's Second Law?",
-  "answer": "Force equals mass times acceleration"
-}
+Tejasvi Chandola
