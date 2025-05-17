@@ -30,22 +30,22 @@ class Flashcard(BaseModel):
 
 
 @app.post("/flashcard")
-def add_flashcard(card: Flashcard):
+def submit_card(card: Flashcard):
     """
     Adds a flashcard for the given student and infers its subject.
 
     Request Body:
     {
         "student_id": "stu001",
-        "question": "What is Newton's Second Law?",
-        "answer": "Force equals mass times acceleration"
+        "q_text": "What is Newton's Second Law?",
+        "ans_text": "Force equals mass times acceleration"
     }
 
     Returns:
         dict: Confirmation message and inferred subject.
     """
     # Infer the subject based on the question
-    subject = infer_subject(card.question)
+    topic = infer_subject(card.question)
 
     # Create flashcard dictionary
     flashcard_data = {
@@ -58,7 +58,7 @@ def add_flashcard(card: Flashcard):
     # Save flashcard
     save_flashcard(flashcard_data)
 
-    return {"message": "Flashcard added successfully", "subject": subject}
+    return {"message": "Your flashcard was saved!", "topic": subject}
 
 
 @app.get("/get-subject")
